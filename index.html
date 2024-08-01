@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img width="300" src="logo.jpg.jpg" alt="company logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href='#'>HOME</a></li>
+                <li><a href='#'>ABOUT</a></li>
+                <li><a href='#'>SERVICES</a></li>
+                <li><a href='#'>CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>registration form </h1>
+    <form id="form">
+        <div class="form-container">
+            <div class="input-container">
+
+                <input type="text" id="name" name="full-name" placeholder="enter your name" required>
+            </div>
+        </div>
+
+        <div class="form-container">
+             <div class="input-container">
+
+                 <input type="email" id="email" name="email" placeholder="enter your email" required>
+             </div>
+        </div>
+
+        <div class="form-container">
+            <div class="input-container">
+
+                <input type="password" id="password" name="password" placeholder="enter your password" required>
+            </div>
+        </div>
+
+       <div class="form-container">
+            <div class="input-container">
+
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="enter your confirm-password" required>
+            </div>
+       </div>
+
+    <div class="form-container">
+        <div class="gender">
+            <h4>gender</h4>
+            <div class="gender-option">
+                <input type="radio" id="male" name="gender" value="male">Male
+            </div>
+            <div class="gender-option">
+                <input type="radio" id="female" name="gender" value="female">Female
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-container">
+        <div class="input-container">
+            <label for="country"></label>
+            <select id="country" name="company" required>
+                <option value="">select your country</option>
+                <option value="india">INDIA</option>
+                <option value="UK">UTTARAKHAND</option>
+                <option value="usa">USA</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-container">
+        <button type="submit">SUBMIT</button>
+    </div>
+
+    </form>
+       </div>
+</main>
+
+<footer>
+    <p>@ 2024 Jeshurun Consultancy Services Pvt Ltd</p>
+</footer>
+<script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        const form = event.target;
+        const title = form.title.value.trim();
+        const email = form.email.value.trim();
+        const password = form.password.value;
+        const confirmPassword = form.confirm_password.value;
+        const gender = form.gender.value;
+        const country = form.country.value;
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        if (title.length < 3) {
+            alert('Title must be at least 3 characters long!');
+            event.preventDefault();
+            return;
+        }
+
+        if (!emailPattern.test(email)) {
+            alert('Please enter a valid email address!');
+            event.preventDefault();
+            return;
+        }
+
+        if (!passwordPattern.test(password)) {
+            alert('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character!');
+            event.preventDefault();
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            alert('Passwords do not match!');
+            event.preventDefault();
+            return;
+        }
+
+        if (!gender) {
+            alert('Please select your gender!');
+            event.preventDefault();
+            return;
+        }
+
+        if (!country) {
+            alert('Please select your country!');
+            event.preventDefault();
+            return;
+        }
+
+        alert('Form submitted successfully!');
+    });
+</script>
+</body>
+</html>
